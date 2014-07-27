@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>ToDo List App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/base.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <section id="todoapp">
+    <header id="header">
+      <h1>todos</h1>
+      <input id="new-todo" placeholder="What needs to be done?" autofocus>
+    </header>
+    <section id="main">
+      <input id="toggle-all" type="checkbox">
+      <label for="toggle-all">Mark all as complete</label>
+      <ul id="todo-list"></ul>
+    </section>
+    <footer id="footer"></footer>
+  </section>
+
+  <div id="info">
+    <p>Double-click to edit a todo</p>
+  </div>
+
+  <!-- underscore.js templates ! -->
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= completed ? 'checked': '' %>>
+      <label><%- title %></label>
+      <button class="destroy"></button>
+      <input class="edit" value="<%- title %>">
+    </div>
+  </script>
+
+  <script type="text/template" id="stats-template">
+    <span id="todo-count"<strong><%= remaining %></strong> <%= remaining ===
+        1 ? 'item' : 'items' %> left </span>
+     <ul id="filters">
+       <li><a class="selected" href="#/">All</a></li>
+       <li><a href="#/active">Active</a></li>
+       <li><a href="#/completed">Completed</a></li>
+     </ul>
+     <% if (completed) { %>
+      <button id="clear-completed">Clear completed (<%= completed %>)</button>
+     <% } %>
+  </script>
+
+  <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script
+      src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+  <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+  <script src="js/debug.js"></script>
+  <script src="js/models/Todo.js"></script>
+  <script src="js/collections/Todos.js"></script>
+  <script src="js/views/TodoView.js"></script>
+  <script src="js/views/AppView.js"></script>
+  <script src="js/routers/AppRouter.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
